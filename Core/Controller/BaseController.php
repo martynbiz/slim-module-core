@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace MartynBiz\Slim\Modules\Core\Controller;
 
 use Interop\Container\ContainerInterface;
 
