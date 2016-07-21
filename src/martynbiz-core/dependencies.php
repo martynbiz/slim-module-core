@@ -7,14 +7,14 @@ MartynBiz\Mongo\Connection::getInstance()->init($settings['settings']['mongo']);
 
 // replace request with our own
 $container['request'] = function($c) {
-    return App\Http\Request::createFromEnvironment($c->get('environment'));
+    return MartynBiz\Slim\Modules\Core\Http\Request::createFromEnvironment($c->get('environment'));
 };
 
 // replace reponse with our own
 $container['response'] = function($c) {
     $settings = $c->get('settings');
-    $headers = new \Slim\Http\Headers(['Content-Type' => 'text/html; charset=UTF-8']);
-    $response = new App\Http\Response(200, $headers);
+    $headers = new Slim\Http\Headers(['Content-Type' => 'text/html; charset=UTF-8']);
+    $response = new MartynBiz\Slim\Modules\Core\Http\Response(200, $headers);
     return $response->withProtocolVersion($c->get('settings')['httpVersion']);
 };
 
@@ -22,9 +22,9 @@ $container['response'] = function($c) {
 $container['renderer'] = function ($c) {
     $settings = $c->get('settings')['renderer'];
     $engine = Foil\engine($settings);
-    $engine->registerFunction('translate', new App\View\Helper\Translate($c) );
-    $engine->registerFunction('pathFor', new App\View\Helper\PathFor($c) );
-    $engine->registerFunction('generateSortQuery', new App\View\Helper\GenerateSortQuery($c) );
+    $engine->registerFunction('translate', new MartynBiz\Slim\Modules\Core\View\Helper\Translate($c) );
+    $engine->registerFunction('pathFor', new MartynBiz\Slim\Modules\Core\View\Helper\PathFor($c) );
+    $engine->registerFunction('generateSortQuery', new MartynBiz\Slim\Modules\Core\View\Helper\GenerateSortQuery($c) );
     return $engine;
 };
 
@@ -47,7 +47,7 @@ $container['locale'] = function($c) {
 // i18n
 $container['i18n'] = function($c) {
     $settings = $c->get('settings')['i18n'];
-    $translator = new \Zend\I18n\Translator\Translator();
+    $translator = new Zend\I18n\Translator\Translator();
     $translator->addTranslationFilePattern($settings['type'], $settings['file_path'], '/%s.php', 'default');
     $translator->setLocale($c['locale']);
     $translator->setFallbackLocale($settings['default_locale']);
@@ -62,10 +62,10 @@ $container['mail_manager'] = function($c) {
     if (APPLICATION_ENV == 'production') {
         $transport = new Zend\Mail\Transport\Sendmail();
     } else {
-        $transport = new \Zend\Mail\Transport\File();
-        $options   = new \Zend\Mail\Transport\FileOptions(array(
+        $transport = new Zend\Mail\Transport\File();
+        $options   = new Zend\Mail\Transport\FileOptions(array(
             'path' => realpath($settings['mail']['file_path']),
-            'callback' => function (\Zend\Mail\Transport\File $transport) {
+            'callback' => function (Zend\Mail\Transport\File $transport) {
                 return 'Message_' . microtime(true) . '_' . mt_rand() . '.txt';
             },
         ));
@@ -80,26 +80,26 @@ $container['mail_manager'] = function($c) {
 
 // flash
 $container['flash'] = function($c) {
-    return new \MartynBiz\FlashMessage\Flash();
+    return new MartynBiz\FlashMessage\Flash();
 };
 
 $container['csrf'] = function ($c) {
-    return new \Slim\Csrf\Guard;
+    return new Slim\Csrf\Guard;
 };
 
 $container['session'] = function ($c) {
     $settings = $c->get('settings')['session'];
 
-    $session_factory = new \Aura\Session\SessionFactory;
+    $session_factory = new Aura\Session\SessionFactory;
     $session = $session_factory->newInstance($_COOKIE);
 
     return $session->getSegment($settings['namespace']);
 };
 
 $container['cache'] = function ($c) {
-    $backend = new \Predis\Client(null, array(
+    $backend = new Predis\Client(null, array(
         'prefix' => 'martynbiz__', // TODO move this into settings
     ));
-    $adapter = new \Desarrolla2\Cache\Adapter\Predis($backend);
-    return new \Desarrolla2\Cache\Cache($adapter);
+    $adapter = new Desarrolla2\Cache\Adapter\Predis($backend);
+    return new Desarrolla2\Cache\Cache($adapter);
 };

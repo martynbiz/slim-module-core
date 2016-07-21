@@ -11,9 +11,9 @@ $ composer require martynbiz/slim-module-core
 ```
 
 ```
-$ cp -ra vendor/martynbiz/slim-module-core/src/* src/
+$ cp -rn vendor/martynbiz/slim-module-core/src/* src/
 ```
 
 TODO
 
-write installer for src/* stuff 
+write installer for src/* stuff
