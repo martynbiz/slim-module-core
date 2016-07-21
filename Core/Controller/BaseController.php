@@ -21,11 +21,15 @@ class BaseController
     {
         $container = $this->getContainer();
 
-        $data = array_merge([
-            'messages' => $container->get('flash')->flushMessages(),
-            'currentUser' => $container->get('auth')->getCurrentUser(),
-            'router' => $container->get('router'),
-        ], $data);
+        // $data['currentUser'] = $container->get('auth')->getCurrentUser();
+
+        if ($container->has('flash')) {
+            $data['messages'] = $container->get('flash')->flushMessages();
+        }
+
+        if ($container->has('router')) {
+            $data['router'] = $container->get('router');
+        }
 
         if ($container->has('csrf')) {
             $data['csrfName'] = $container->get('request')->getAttribute('csrf_name');
