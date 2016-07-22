@@ -81,13 +81,13 @@ class BaseController
      * @return Controller
      * @internal param string $status The redirect HTTP status code.
      */
-    public function forward($actionName, $data=array(), $request, $response, $args)
+    public function forward($actionName, $request, $response, $args)
     {
         // update the action name that was last used
         if (method_exists($this->response, 'setActionName')) {
             $this->response->setActionName($actionName);
         }
 
-        return call_user_func_array(array($this, $actionName), [$data, $request, $response, $args]);
+        return call_user_func_array(array($this, $actionName), [$request, $response, $args]);
     }
 }
