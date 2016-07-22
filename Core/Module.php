@@ -7,8 +7,9 @@ use Slim\Http\Headers;
 use MartynBiz\Mongo\Connection;
 use MartynBiz\Slim\Modules\Core\Http\Request;
 use MartynBiz\Slim\Modules\Core\Http\Response;
+use MartynBiz\Slim\Module\ModuleInterface;
 
-class Module
+class Module implements ModuleInterface
 {
     /**
      * Get config array for this module
@@ -37,9 +38,9 @@ class Module
         $container['renderer'] = function ($c) {
             $settings = $c->get('settings')['renderer'];
             $engine = \Foil\engine($settings);
-            $engine->registerFunction('translate', new MartynBiz\Slim\Modules\Core\View\Helper\Translate($c) );
-            $engine->registerFunction('pathFor', new MartynBiz\Slim\Modules\Core\View\Helper\PathFor($c) );
-            $engine->registerFunction('generateSortQuery', new MartynBiz\Slim\Modules\Core\View\Helper\GenerateSortQuery($c) );
+            $engine->registerFunction('translate', new \MartynBiz\Slim\Modules\Core\View\Helper\Translate($c) );
+            $engine->registerFunction('pathFor', new \MartynBiz\Slim\Modules\Core\View\Helper\PathFor($c) );
+            $engine->registerFunction('generateSortQuery', new \MartynBiz\Slim\Modules\Core\View\Helper\GenerateSortQuery($c) );
             return $engine;
         };
 
@@ -127,10 +128,7 @@ class Module
      */
     public function initMiddleware(App $app)
     {
-        $container = $app->getContainer();
-
-        // If you are implementing per-route checks you must not add this
-        // $app->add($container->get('csrf'));
+        
     }
 
     /**
