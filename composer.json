@@ -21,15 +21,11 @@
 	    {
             "url": "https://github.com/martynbiz/php-translate-tool.git",
             "type": "git"
-        },
-	    {
-            "url": "https://github.com/martynbiz/slim-module-core.git",
-            "type": "git"
         }
     ],
     "autoload": {
         "psr-4": {
-            "MartynBiz\\Slim\\Modules\\Core\\": "Core/"
+            "MartynBiz\\Slim\\Modules\\Core\\": "src/"
         }
     },
     "require": {
