@@ -6,7 +6,7 @@ return [
         // Renderer settings
         'renderer' => [
             'folders' => [
-                APPLICATION_PATH . '/src/martynbiz-core/templates',
+                APPLICATION_PATH . '/templates',
             ],
             'ext' => 'phtml',
         ],
