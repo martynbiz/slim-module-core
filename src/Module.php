@@ -5,9 +5,10 @@ use Slim\App;
 use Slim\Container;
 use Slim\Http\Headers;
 use MartynBiz\Mongo\Connection;
-use MartynBiz\Slim\Modules\Core\Http\Request;
-use MartynBiz\Slim\Modules\Core\Http\Response;
+use MartynBiz\Slim\Module\Core\Http\Request;
+use MartynBiz\Slim\Module\Core\Http\Response;
 use MartynBiz\Slim\Module\ModuleInterface;
+use MartynBiz\Slim\Module\Core;
 
 class Module implements ModuleInterface
 {
@@ -38,9 +39,9 @@ class Module implements ModuleInterface
         $container['renderer'] = function ($c) {
             $settings = $c->get('settings')['renderer'];
             $engine = \Foil\engine($settings);
-            $engine->registerFunction('translate', new \MartynBiz\Slim\Modules\Core\View\Helper\Translate($c) );
-            $engine->registerFunction('pathFor', new \MartynBiz\Slim\Modules\Core\View\Helper\PathFor($c) );
-            $engine->registerFunction('generateSortQuery', new \MartynBiz\Slim\Modules\Core\View\Helper\GenerateSortQuery($c) );
+            $engine->registerFunction('translate', new Core\View\Helper\Translate($c) );
+            $engine->registerFunction('pathFor', new Core\View\Helper\PathFor($c) );
+            $engine->registerFunction('generateSortQuery', new Core\View\Helper\GenerateSortQuery($c) );
             return $engine;
         };
 
@@ -91,7 +92,7 @@ class Module implements ModuleInterface
             $locale = $c['locale'];
             $defaultLocale = @$settings['i18n']['default_locale'];
 
-            return new App\Mail($transport, $c['renderer'], $c['i18n'], $locale, $defaultLocale, $c['i18n']);
+            return new Core\Mail($transport, $c['renderer'], $c['i18n'], $locale, $defaultLocale, $c['i18n']);
         };
 
         // flash
