@@ -141,7 +141,7 @@ class Module
      */
     public function initRoutes(App $app)
     {
-        $app->get('/hello', function ($request, $response, $args) {
+        $app->get('/helloworld', function ($request, $response, $args) {
             $response->getBody()->write('Hello world!');
             return $response;
         });
