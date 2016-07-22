@@ -1,5 +1,5 @@
 <?php
-namespace MartynBiz\Slim\Modules\Core;
+namespace MartynBiz\Slim\Module\Core;
 
 use Slim\App;
 use Slim\Container;
@@ -128,7 +128,7 @@ class Module implements ModuleInterface
      */
     public function initMiddleware(App $app)
     {
-        
+
     }
 
     /**

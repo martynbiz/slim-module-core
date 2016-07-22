@@ -1,5 +1,5 @@
 <?php
-namespace MartynBiz\Slim\Modules\Core\Http;
+namespace MartynBiz\Slim\Module\Core\Http;
 
 use Psr\Http\Message\ResponseInterface;
 

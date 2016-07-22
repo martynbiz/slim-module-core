@@ -1,6 +1,6 @@
 <?php
 
-namespace MartynBiz\Slim\Modules\Core\Model;
+namespace MartynBiz\Slim\Module\Core\Model;
 
 use MartynBiz\Mongo\Mongo;
 

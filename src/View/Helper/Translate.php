@@ -1,5 +1,5 @@
 <?php
-namespace MartynBiz\Slim\Modules\Core\View\Helper;
+namespace MartynBiz\Slim\Module\Core\View\Helper;
 
 class Translate
 {

@@ -25,7 +25,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "MartynBiz\\Slim\\Modules\\Core\\": "src/"
+            "MartynBiz\\Slim\\Module\\Core\\": "src/"
         }
     },
     "require": {
