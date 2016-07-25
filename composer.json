@@ -15,6 +15,10 @@
     "prefer-stable": true,
     "repositories": [
         {
+            "url": "https://github.com/martynbiz/slim-module.git",
+            "type": "git"
+        },
+        {
             "url": "https://github.com/martynbiz/php-mongo",
             "type": "git"
         },
@@ -23,14 +27,10 @@
             "type": "git"
         }
     ],
-    "autoload": {
-        "psr-4": {
-            "MartynBiz\\Slim\\Module\\Core\\": "src/"
-        }
-    },
     "require": {
         "php": ">=5.3.0",
         "foil/foil": "0.*",
+        "martynbiz/slim-module": "dev-master",
         "martynbiz/php-mongo": "dev-master",
         "martynbiz/php-validator": "dev-master",
         "martynbiz/php-flash-message": "dev-master",
@@ -48,5 +48,10 @@
     "require-dev": {
         "phpunit/phpunit": "4.8.*",
         "martynbiz/php-translate-tool": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "MartynBiz\\Slim\\Module\\Core\\": "src/"
+        }
     }
 }

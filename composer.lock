@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1a47c25b1c94ce5d4a17238c5d832427",
-    "content-hash": "14a7401db43078a3e4bd098c4fa571b5",
+    "hash": "9f31ed215f8826e73792e57cacc7c6a6",
+    "content-hash": "b34d892700b9f8f14838a4b8a64671f7",
     "packages": [
         {
             "name": "aura/html",
@@ -557,6 +557,44 @@
                 "validation"
             ],
             "time": "2016-05-31 15:20:15"
+        },
+        {
+            "name": "martynbiz/slim-module",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/martynbiz/slim-module.git",
+                "reference": "50d51876e973ab16c6c98eb2db66e9afcb58c563"
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.*",
+                "slim/slim": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MartynBiz\\Slim\\Module\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martyn Bissett",
+                    "email": "martynbissett@yahoo.co.uk",
+                    "homepage": "http://martyn.biz",
+                    "role": "Developer"
+                }
+            ],
+            "keywords": [
+                "module",
+                "slim"
+            ],
+            "time": "2016-07-25 11:43:45"
         },
         {
             "name": "monolog/monolog",
@@ -2579,6 +2617,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "martynbiz/slim-module": 20,
         "martynbiz/php-mongo": 20,
         "martynbiz/php-validator": 20,
         "martynbiz/php-flash-message": 20,
