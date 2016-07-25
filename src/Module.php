@@ -145,4 +145,13 @@ class Module implements ModuleInterface
             return $response;
         });
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function copyFiles($dest)
+    {
+        $src = __DIR__ . '/../files/*';
+        shell_exec("cp -rn $src $dest");
+    }
 }
