@@ -140,10 +140,7 @@ class Module implements ModuleInterface
      */
     public function initRoutes(App $app)
     {
-        $app->get('/helloworld', function ($request, $response, $args) {
-            $response->getBody()->write('Hello world!');
-            return $response;
-        });
+        
     }
 
     /**
@@ -153,5 +150,23 @@ class Module implements ModuleInterface
     {
         $src = __DIR__ . '/../files/*';
         shell_exec("cp -rn $src $dest");
+    }
+
+    /**
+     * Removes files from the project tree
+     * @param string $dest The root of the project
+     * @return void
+     */
+    public function removeFiles($dest)
+    {
+        if (file_exists("$dest/src/autoload/settings.martynbiz-core.php")) {
+            shell_exec("rm $dest/src/autoload/settings.martynbiz-core.php");
+        }
+        if (file_exists("$dest/templates/layouts")) {
+            shell_exec("rm -rf $dest/templates/layouts");
+        }
+        if (file_exists("$dest/templates/partials")) {
+            shell_exec("rm -rf $dest/templates/partials");
+        }
     }
 }
