@@ -37,14 +37,14 @@ class Module implements ModuleInterface
 
         // view renderer
         $container['renderer'] = function ($c) {
-            
+
             // we will add folders after instatiation so that we can assign IDs
             $settings = $c->get('settings')['renderer'];
             $folders = $settings['folders'];
             unset($settings['folders']);
-            
+
             $engine = \Foil\engine($settings);
-            
+
             // assign IDs
             foreach($folders as $id => $folder) {
                 if (is_numeric($id)) {
@@ -53,11 +53,11 @@ class Module implements ModuleInterface
                     $engine->addFolder($folder, $id);
                 }
             }
-            
+
             $engine->registerFunction('translate', new Core\View\Helper\Translate($c) );
             $engine->registerFunction('pathFor', new Core\View\Helper\PathFor($c) );
             $engine->registerFunction('generateSortQuery', new Core\View\Helper\GenerateSortQuery($c) );
-            
+
             return $engine;
         };
 
