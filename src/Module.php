@@ -140,15 +140,17 @@ class Module implements ModuleInterface
      */
     public function initRoutes(App $app)
     {
-        
+
     }
 
     /**
-     * {@inheritdoc}
+     * Copies files from vendor dir to project tree
+     * @param string $dest The root of the project
+     * @return void
      */
     public function copyFiles($dest)
     {
-        $src = __DIR__ . '/../files/*';
+        $src = __DIR__ . '/../modules/*';
         shell_exec("cp -rn $src $dest");
     }
 
@@ -159,14 +161,8 @@ class Module implements ModuleInterface
      */
     public function removeFiles($dest)
     {
-        if (file_exists("$dest/src/autoload/settings.martynbiz-core.php")) {
-            shell_exec("rm $dest/src/autoload/settings.martynbiz-core.php");
-        }
-        if (file_exists("$dest/templates/layouts")) {
-            shell_exec("rm -rf $dest/templates/layouts");
-        }
-        if (file_exists("$dest/templates/partials")) {
-            shell_exec("rm -rf $dest/templates/partials");
+        if ($path = realpath("$dest/martynbiz-core")) {
+            shell_exec("rm -rf $path");
         }
     }
 }
