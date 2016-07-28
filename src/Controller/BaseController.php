@@ -3,7 +3,7 @@ namespace MartynBiz\Slim\Module\Core\Controller;
 
 use Interop\Container\ContainerInterface;
 
-class BaseController
+abstract class BaseController
 {
     protected $ci;
 
