@@ -139,6 +139,11 @@ class Module implements ModuleInterface
             $adapter = new \Desarrolla2\Cache\Adapter\Predis($backend);
             return new \Desarrolla2\Cache\Cache($adapter);
         };
+
+        $capsule = new \Illuminate\Database\Capsule\Manager;
+        $capsule->addConnection($container->get('settings')['eloquent']);
+        $capsule->bootEloquent();
+        $capsule->setAsGlobal();
     }
 
     /**
