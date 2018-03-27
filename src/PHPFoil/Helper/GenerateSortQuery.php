@@ -1,5 +1,5 @@
 <?php
-namespace MartynBiz\Slim\Module\Core\View\Helper;
+namespace MartynBiz\Slim\Module\Core\PHPFoil\Helper;
 
 class GenerateSortQuery
 {

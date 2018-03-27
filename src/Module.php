@@ -4,9 +4,12 @@ namespace MartynBiz\Slim\Module\Core;
 use Slim\App;
 use Slim\Container;
 use Slim\Http\Headers;
-use MartynBiz\Mongo\Connection;
-use MartynBiz\Slim\Module\Core\Http\Request;
-use MartynBiz\Slim\Module\Core\Http\Response;
+use Slim\Http\Request;
+use Slim\Http\Response;
+
+// use MartynBiz\Mongo\Connection;
+// use MartynBiz\Slim\Module\Core\Http\Request;
+// use MartynBiz\Slim\Module\Core\Http\Response;
 use MartynBiz\Slim\Module\ModuleInterface;
 use MartynBiz\Slim\Module\Core;
 
@@ -20,7 +23,7 @@ class Module implements ModuleInterface
     {
         $settings = $container->get('settings');
 
-        Connection::getInstance()->init($settings['mongo']);
+        // Connection::getInstance()->init($settings['mongo']);
 
         // replace request with our own
         $container['request'] = function($c) {
@@ -54,9 +57,9 @@ class Module implements ModuleInterface
                 }
             }
 
-            $engine->registerFunction('translate', new Core\View\Helper\Translate($c) );
-            $engine->registerFunction('pathFor', new Core\View\Helper\PathFor($c) );
-            $engine->registerFunction('generateSortQuery', new Core\View\Helper\GenerateSortQuery($c) );
+            $engine->registerFunction('translate', new Core\PHPFoil\Helper\Translate($c) );
+            $engine->registerFunction('pathFor', new Core\PHPFoil\Helper\PathFor($c) );
+            $engine->registerFunction('generateSortQuery', new Core\PHPFoil\Helper\GenerateSortQuery($c) );
 
             return $engine;
         };
