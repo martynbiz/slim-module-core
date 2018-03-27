@@ -76,7 +76,7 @@ class Module implements ModuleInterface
         // locale - required by a few services, so easier to put in container
         $container['locale'] = function($c) {
             $settings = $c->get('settings')['i18n'];
-            $locale = $c['request']->getCookie('language', $settings['default_locale']);
+            $locale = $c['request']->getCookieParam('language', $settings['default_locale']);
             return $locale;
         };
 
