@@ -20,7 +20,7 @@ class Module implements ModuleInterface
     {
         $settings = $container->get('settings');
 
-        Connection::getInstance()->init($settings['mongo']);
+        // Connection::getInstance()->init($settings['mongo']);
 
         // replace request with our own
         $container['request'] = function($c) {
