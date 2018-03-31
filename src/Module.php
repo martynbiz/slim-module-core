@@ -64,6 +64,25 @@ class Module implements ModuleInterface
             return $engine;
         };
 
+        // debugbar
+        $container['debugbar'] = function ($c) {
+
+            // get settings as an array
+            $settings = [];
+            foreach($c->get('settings') as $key => $value) {
+                $settings[$key] = $value;
+            }
+
+            $debugbar = new \MartynBiz\PHPDebugBar($settings['debugbar']);
+
+            $pdo = $c['model.song']->getConnection()->getPDO();
+
+            $debugbar->addDatabaseCollector($pdo);
+            $debugbar->addConfigCollector( $settings ); // config array
+
+            return $debugbar;
+        };
+
         // monolog
         $container['logger'] = function ($c) {
             $settings = $c->get('settings')['Applogger'];
