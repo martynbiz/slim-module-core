@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "22bc2ed22bdb03f0a453db38bac8a01e",
+    "content-hash": "44ce9ff10a5313eb8f6bb480aec01579",
     "packages": [
         {
             "name": "aura/html",
@@ -733,6 +733,43 @@
             "time": "2017-05-04 20:38:19"
         },
         {
+            "name": "martynbiz/phpdebugbar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/martynbiz/phpdebugbar.git",
+                "reference": "d42b0c328516bfe2efec0dd50cf39c3785e77c48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/martynbiz/phpdebugbar/zipball/d42b0c328516bfe2efec0dd50cf39c3785e77c48",
+                "reference": "d42b0c328516bfe2efec0dd50cf39c3785e77c48",
+                "shasum": ""
+            },
+            "require": {
+                "maximebf/debugbar": "1.*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MartynBiz": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Martyn Bissett",
+                    "email": "martyn@metroworks.co.jp"
+                }
+            ],
+            "description": "A wrapper for maximebf/debugbar to be simpler and configurable (e.g. disabled in production) on instantiation.",
+            "time": "2015-06-11 01:42:05"
+        },
+        {
             "name": "martynbiz/slim-module",
             "version": "dev-master",
             "source": {
@@ -769,6 +806,67 @@
                 "slim"
             ],
             "time": "2016-07-25 15:50:49"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "v1.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
+                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": "^1.0",
+                "symfony/var-dumper": "^2.6|^3.0|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0|^5.0"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.14-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DebugBar\\": "src/DebugBar/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                },
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug",
+                "debugbar"
+            ],
+            "time": "2017-12-15T11:13:46+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1729,6 +1827,75 @@
             "time": "2018-02-22T06:28:18+00:00"
         },
         {
+            "name": "symfony/var-dumper",
+            "version": "v3.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "80964679d81da3d5618519e0e4be488c3d7ecd7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/80964679d81da3d5618519e0e4be488c3d7ecd7d",
+                "reference": "80964679d81da3d5618519e0e4be488c3d7ecd7d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
+            },
+            "require-dev": {
+                "ext-iconv": "*",
+                "twig/twig": "~1.34|~2.4"
+            },
+            "suggest": {
+                "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
+                "ext-intl": "To show region name in time zone dump",
+                "ext-symfony_debug": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "Resources/functions/dump.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Component\\VarDumper\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony mechanism for exploring and dumping PHP variables",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "debug",
+                "dump"
+            ],
+            "time": "2018-02-22T17:29:24+00:00"
+        },
+        {
             "name": "symfony/yaml",
             "version": "v3.4.6",
             "source": {
@@ -2398,104 +2565,6 @@
                 "translations"
             ],
             "time": "2016-06-14 05:26:58"
-        },
-        {
-            "name": "martynbiz/phpdebugbar",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/martynbiz/phpdebugbar.git",
-                "reference": "d42b0c328516bfe2efec0dd50cf39c3785e77c48"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/martynbiz/phpdebugbar/zipball/d42b0c328516bfe2efec0dd50cf39c3785e77c48",
-                "reference": "d42b0c328516bfe2efec0dd50cf39c3785e77c48",
-                "shasum": ""
-            },
-            "require": {
-                "maximebf/debugbar": "1.*",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "MartynBiz": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Martyn Bissett",
-                    "email": "martyn@metroworks.co.jp"
-                }
-            ],
-            "description": "A wrapper for maximebf/debugbar to be simpler and configurable (e.g. disabled in production) on instantiation.",
-            "time": "2015-06-11 01:42:05"
-        },
-        {
-            "name": "maximebf/debugbar",
-            "version": "v1.15.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
-                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "psr/log": "^1.0",
-                "symfony/var-dumper": "^2.6|^3.0|^4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.0|^5.0"
-            },
-            "suggest": {
-                "kriswallsmith/assetic": "The best way to manage assets",
-                "monolog/monolog": "Log using Monolog",
-                "predis/predis": "Redis storage"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.14-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "DebugBar\\": "src/DebugBar/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maxime Bouroumeau-Fuseau",
-                    "email": "maxime.bouroumeau@gmail.com",
-                    "homepage": "http://maximebf.com"
-                },
-                {
-                    "name": "Barry vd. Heuvel",
-                    "email": "barryvdh@gmail.com"
-                }
-            ],
-            "description": "Debug bar in the browser for php application",
-            "homepage": "https://github.com/maximebf/php-debugbar",
-            "keywords": [
-                "debug",
-                "debugbar"
-            ],
-            "time": "2017-12-15T11:13:46+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3459,75 +3528,6 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2015-06-21T13:59:46+00:00"
-        },
-        {
-            "name": "symfony/var-dumper",
-            "version": "v3.4.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "80964679d81da3d5618519e0e4be488c3d7ecd7d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/80964679d81da3d5618519e0e4be488c3d7ecd7d",
-                "reference": "80964679d81da3d5618519e0e4be488c3d7ecd7d",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5.9|>=7.0.8",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "conflict": {
-                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
-            },
-            "require-dev": {
-                "ext-iconv": "*",
-                "twig/twig": "~1.34|~2.4"
-            },
-            "suggest": {
-                "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
-                "ext-intl": "To show region name in time zone dump",
-                "ext-symfony_debug": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "Resources/functions/dump.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Component\\VarDumper\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony mechanism for exploring and dumping PHP variables",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "debug",
-                "dump"
-            ],
-            "time": "2018-02-22T17:29:24+00:00"
         },
         {
             "name": "webmozart/assert",
