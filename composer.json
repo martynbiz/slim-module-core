@@ -48,7 +48,9 @@
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.*",
-        "martynbiz/php-translate-tool": "dev-master"
+        "martynbiz/php-translate-tool": "dev-master",
+        "symfony/dom-crawler": "^3.2",
+        "symfony/css-selector": "^3.2"
     },
     "autoload": {
         "psr-4": {
