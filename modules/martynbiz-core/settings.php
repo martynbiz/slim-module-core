@@ -9,6 +9,7 @@ return [
                 'martynbiz-core' => APPLICATION_PATH . '/modules/martynbiz-core/templates',
             ],
             'ext' => 'phtml',
+            'autoescape' => false,
         ],
 
         // Monolog settings
@@ -27,7 +28,7 @@ return [
             'type' => 'phparray',
 
             // where the translation files are stored
-            'file_path' => APPLICATION_PATH . '/modules/application/language/',
+            'file_path' => APPLICATION_PATH . '/modules/app/languages/',
         ],
 
         'mail' => [
@@ -38,6 +39,19 @@ return [
 
         'session' => [
             'namespace' => 'slim3__',
+        ],
+
+        'debugbar' => [
+            'enabled' => false,
+            'base_url' => '/phpdebugbar',
+        ],
+
+        'eloquent' => [
+            'driver' => 'mysql',
+    		'host' => 'localhost',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
         ],
     ],
 ];

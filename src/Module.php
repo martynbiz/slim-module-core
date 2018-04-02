@@ -57,9 +57,10 @@ class Module implements ModuleInterface
                 }
             }
 
-            $engine->registerFunction('translate', new Core\PHPFoil\Helper\Translate($c) );
-            $engine->registerFunction('pathFor', new Core\PHPFoil\Helper\PathFor($c) );
-            $engine->registerFunction('generateSortQuery', new Core\PHPFoil\Helper\GenerateSortQuery($c) );
+            $engine->registerFunction('translate', new \App\View\Helper\Translate($c) );
+            $engine->registerFunction('pathFor', new \App\View\Helper\PathFor($c) );
+            $engine->registerFunction('generateQueryString', new \App\View\Helper\GenerateQueryString($c) );
+            $engine->registerFunction('generateSortLink', new \App\View\Helper\GenerateSortLink($c) );
 
             return $engine;
         };
