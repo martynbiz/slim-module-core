@@ -184,7 +184,7 @@ class Module implements ModuleInterface
      */
     public function initRoutes(App $app)
     {
-
+        
     }
 
     /**

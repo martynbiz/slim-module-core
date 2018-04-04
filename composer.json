@@ -25,6 +25,10 @@
 	    {
             "url": "https://github.com/martynbiz/phpdebugbar.git",
             "type": "git"
+        },
+	    {
+            "url": "https://github.com/martynbiz/php-events.git",
+            "type": "git"
         }
     ],
     "require": {
@@ -44,6 +48,7 @@
         "aura/session": "^2.0",
         "illuminate/database": "^5.5",
         "martynbiz/phpdebugbar": "dev-master",
+        "martynbiz/events": "dev-master",
         "robmorgan/phinx": "^0.9.2"
     },
     "require-dev": {
