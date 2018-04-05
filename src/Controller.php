@@ -57,7 +57,7 @@ abstract class Controller
         $format = $request->getParam('format');
 
         // fire any event handlers for "rendering"
-        $container['events']->run("core:rendering", $file, $data);
+        $container['events']->trigger("core:rendering", $file, $data);
 
         if ($format == 'json') {
 

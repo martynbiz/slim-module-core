@@ -134,6 +134,11 @@ class Module implements ModuleInterface
             return new Core\Mail($transport, $c['renderer'], $c['i18n'], $locale, $defaultLocale, $c['i18n']);
         };
 
+        // events
+        $container['events'] = function($c) {
+            return new \MartynBiz\Events\Dispatcher();
+        };
+
         // flash
         $container['flash'] = function($c) {
             return new \MartynBiz\FlashMessage\Flash();
@@ -184,7 +189,12 @@ class Module implements ModuleInterface
      */
     public function initRoutes(App $app)
     {
-        
+
+        // TODO move this somewhere else
+        $container = $app->getContainer();
+        $container['events']->register("core:rendering", function(&$file, &$data) use ($container) {
+            $data['current_user'] = $container['martynbiz-auth.auth']->getCurrentUser();
+        });
     }
 
     /**
