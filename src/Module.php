@@ -202,10 +202,11 @@ class Module implements ModuleInterface
      * @param string $dest The root of the project
      * @return void
      */
-    public function copyFiles($dest)
+    public function copyFiles($dirs)
     {
-        $src = __DIR__ . '/../modules/*';
-        shell_exec("cp -rn $src $dest");
+        // copy module settings and template
+        $src = __DIR__ . '/../files/modules/*';
+        shell_exec("cp -rn $src {$dirs['modules']}");
     }
 
     /**
@@ -213,10 +214,13 @@ class Module implements ModuleInterface
      * @param string $dest The root of the project
      * @return void
      */
-    public function removeFiles($dest)
+    public function removeFiles($dirs)
     {
-        if ($path = realpath("$dest/martynbiz-core")) {
+        // remove module settings and template
+        if ($path = realpath("{$dirs['modules']}/martynbiz-auth")) {
             shell_exec("rm -rf $path");
         }
+
+        // TODO inform to manually remove db migrations coz they'll fuck up rollback
     }
 }
