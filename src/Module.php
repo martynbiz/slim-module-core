@@ -190,7 +190,19 @@ class Module implements ModuleInterface
     public function initRoutes(App $app)
     {
 
-        // TODO move this somewhere else
+    }
+
+    /**
+     * Load is run last, when config, dependencies, etc have been initiated
+     * Routes ought to go here
+     * @param App $app
+     * @return void
+     */
+    public function postInit(App $app)
+    {
+        $container = $app->getContainer();
+
+        // add events for this module
         $container = $app->getContainer();
         $container['events']->register("core:rendering", function(&$file, &$data) use ($container) {
             $data['current_user'] = $container['martynbiz-auth.auth']->getCurrentUser();
