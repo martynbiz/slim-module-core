@@ -190,7 +190,19 @@ class Module implements ModuleInterface
     public function initRoutes(App $app)
     {
 
-        // TODO move this somewhere else
+    }
+
+    /**
+     * Load is run last, when config, dependencies, etc have been initiated
+     * Routes ought to go here
+     * @param App $app
+     * @return void
+     */
+    public function postInit(App $app)
+    {
+        $container = $app->getContainer();
+
+        // add events for this module
         $container = $app->getContainer();
         $container['events']->register("core:rendering", function(&$file, &$data) use ($container) {
             $data['current_user'] = $container['martynbiz-auth.auth']->getCurrentUser();
@@ -202,10 +214,11 @@ class Module implements ModuleInterface
      * @param string $dest The root of the project
      * @return void
      */
-    public function copyFiles($dest)
+    public function copyFiles($dirs)
     {
-        $src = __DIR__ . '/../modules/*';
-        shell_exec("cp -rn $src $dest");
+        // copy module settings and template
+        $src = __DIR__ . '/../files/modules/*';
+        shell_exec("cp -rn $src {$dirs['modules']}");
     }
 
     /**
@@ -213,10 +226,13 @@ class Module implements ModuleInterface
      * @param string $dest The root of the project
      * @return void
      */
-    public function removeFiles($dest)
+    public function removeFiles($dirs)
     {
-        if ($path = realpath("$dest/martynbiz-core")) {
+        // remove module settings and template
+        if ($path = realpath("{$dirs['modules']}/martynbiz-auth")) {
             shell_exec("rm -rf $path");
         }
+
+        // TODO inform to manually remove db migrations coz they'll fuck up rollback
     }
 }
