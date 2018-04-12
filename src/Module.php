@@ -79,7 +79,7 @@ class Module implements ModuleInterface
             $pdo = $c['model.song']->getConnection()->getPDO();
 
             $debugbar->addDatabaseCollector($pdo);
-            $debugbar->addConfigCollector( $settings ); // config array
+            $debugbar->addConfigCollector($settings); // config array
 
             return $debugbar;
         };
