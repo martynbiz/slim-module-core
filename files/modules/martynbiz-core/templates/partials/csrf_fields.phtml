@@ -1,0 +1,8 @@
+<?php
+$nameKey = $this->csrf->getTokenNameKey();
+$valueKey = $this->csrf->getTokenValueKey();
+$name = $this->csrf->getTokenName();
+$value = $this->csrf->getTokenValue();
+?>
+<input type="hidden" name="<?= $nameKey ?>" value="<?= $name ?>">
+<input type="hidden" name="<?= $valueKey ?>" value="<?= $value ?>">
