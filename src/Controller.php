@@ -50,8 +50,7 @@ abstract class Controller
             $data['debugbar'] = $container->get('debugbar');
         }
 
-        $data['csrf_name'] = $container->get('session')->get('csrf_name');
-        $data['csrf_value'] = $container->get('session')->get('csrf_value');
+        $data['csrf'] = $container->get('csrf');
 
         // depending on the requested format, we'll return data that way
         $format = $request->getParam('format');

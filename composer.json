@@ -44,7 +44,7 @@
         "zendframework/zend-cache": "^2.7",
         "desarrolla2/cache": "^2.1",
         "predis/predis": "^1.0",
-        "slim/csrf": "^0.6.0",
+        "slim/csrf": "^0.8.2",
         "aura/session": "^2.0",
         "illuminate/database": "^5.5",
         "martynbiz/phpdebugbar": "dev-master",
