@@ -1,18 +1,8 @@
 <?php
 namespace MartynBiz\Slim\Module\Core\PHPFoil\Helper;
 
-class PathFor
+class PathFor extends BaseHelper
 {
-    /**
-     * Slim\Container
-     */
-    protected $container;
-
-    public function __construct($container)
-    {
-        $this->container = $container;
-    }
-
     function __invoke($routeName, $args=[])
     {
         return $this->container['router']->pathFor($routeName, $args);

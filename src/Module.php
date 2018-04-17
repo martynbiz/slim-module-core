@@ -7,9 +7,6 @@ use Slim\Http\Headers;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-// use MartynBiz\Mongo\Connection;
-// use MartynBiz\Slim\Module\Core\Http\Request;
-// use MartynBiz\Slim\Module\Core\Http\Response;
 use MartynBiz\Slim\Module\ModuleInterface;
 use MartynBiz\Slim\Module\Core;
 
@@ -57,10 +54,9 @@ class Module implements ModuleInterface
                 }
             }
 
-            $engine->registerFunction('translate', new \App\View\Helper\Translate($c) );
-            $engine->registerFunction('pathFor', new \App\View\Helper\PathFor($c) );
-            $engine->registerFunction('generateQueryString', new \App\View\Helper\GenerateQueryString($c) );
-            $engine->registerFunction('generateSortLink', new \App\View\Helper\GenerateSortLink($c) );
+            $engine->registerFunction('translate', new Core\PHPFoil\Helper\Translate($c) );
+            $engine->registerFunction('pathFor', new Core\PHPFoil\Helper\PathFor($c) );
+            $engine->registerFunction('generateQueryString', new Core\PHPFoil\Helper\GenerateQueryString($c) );
 
             return $engine;
         };
@@ -145,7 +141,17 @@ class Module implements ModuleInterface
         };
 
         $container['csrf'] = function ($c) {
-            return new \Slim\Csrf\Guard;
+
+            $settings = $c->get('settings')['csrf'];
+
+            if (@$settings['enabled']) {
+                return new \Slim\Csrf\Guard;
+            } else {
+                return function ($request, $response, $next) {
+                    $response = $next($request, $response);
+                    return $response;
+                };
+            }
         };
 
         $container['session'] = function ($c) {
@@ -180,9 +186,9 @@ class Module implements ModuleInterface
     {
         $container = $app->getContainer();
 
-        // Register middleware for all routes
-        // If you are implementing per-route checks you must not add this
-        $app->add($container->get('csrf'));
+        // // Register middleware for all routes
+        // // If you are implementing per-route checks you must not add this
+        // $app->add($container->get('csrf'));
     }
 
     /**
